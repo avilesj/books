@@ -4,7 +4,7 @@ let Book = (props) => {
     return (
         <div className="book">
             <div className="book-image">
-                <img src="https://via.placeholder.com/250X200C/" alt="" srcset="" />
+                <img src="https://via.placeholder.com/250X200C/" alt="" srcSet="" />
             </div>
             <div className="book-info">
                 <div className="book-title">

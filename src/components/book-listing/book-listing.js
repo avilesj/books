@@ -6,8 +6,8 @@ let BookListing = (props) => {
         <section id="books-section">
             <div className="container">
                 <div className="section-title">
-                    <h1>HTML Books</h1>
-                    <BooksContainer />
+                    <h1>{props.title + " Books"}</h1>
+                    <BooksContainer books={props.books} />
                 </div>
             </div>
         </section>
