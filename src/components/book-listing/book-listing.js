@@ -2,6 +2,17 @@ import React from 'react';
 import BooksContainer from './books-container';
 
 let BookListing = (props) => {
+    if (props.books.length === 0) {
+        return(
+        <section id="books-section">
+            <div className="container">
+                <div className="section-title">
+                    <h1>There doesn't seem to be anything here.</h1>
+                </div>
+            </div>
+        </section>
+        )
+    }
     return (
         <section id="books-section">
             <div className="container">

@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
 import BookListing from '../components/book-listing/book-listing';
 
-let BooksSectionPage = (props) => {
-    let books = [1, 2, 3, 4, 5, 6]
-    return (
-        <div className="has-fixed-footer">
-            <Header />
-            <BookListing title={props.categoryName} books={books}/>
-            <Footer />
-        </div>
-    )
+class BooksSectionPage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            books: [],
+            isLoading: true
+        }
+    }
+
+    render() {
+        return (
+            <div className="has-fixed-footer">
+                <Header />
+                {this.state.isLoading ?
+                    <p>Loading...</p>
+                    :
+                    <BookListing title={this.props.categoryName} books={this.state.books} />
+                }
+                <Footer />
+            </div>
+        )
+    }
 }
 
 BooksSectionPage.defaultProps = {
