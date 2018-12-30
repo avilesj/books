@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
 import BookListing from '../components/book-listing/book-listing';
+import Axios from 'axios';
 
 class BooksSectionPage extends Component {
     constructor(props) {
@@ -13,6 +14,15 @@ class BooksSectionPage extends Component {
         }
     }
 
+    componentDidMount(){
+        Axios.get("https://www.googleapis.com/books/v1/volumes?langRestrict=en&q=" + this.props.categoryName + "&key=AIzaSyCYvqRcu1pCPcxhWNDyjiWOh1_oZ8mR0xY")
+        .then((response) => {
+            this.setState({
+                books: response.data.items,
+                isLoading: false
+            })
+        })
+    }
     render() {
         return (
             <div className="has-fixed-footer">
@@ -29,6 +39,6 @@ class BooksSectionPage extends Component {
 }
 
 BooksSectionPage.defaultProps = {
-    categoryName: "",
+    categoryName: "HTML",
 }
 export default BooksSectionPage;

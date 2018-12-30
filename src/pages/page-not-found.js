@@ -5,7 +5,7 @@ import Header from '../components/header/header';
 
 let PageNotFound = (props) => {
     return (
-        <div class="has-fixed-footer">
+        <div className="has-fixed-footer">
             <Header />
             <section id="page-not-found">
                 <div className="container">

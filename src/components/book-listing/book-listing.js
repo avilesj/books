@@ -7,7 +7,7 @@ let BookListing = (props) => {
         <section id="books-section">
             <div className="container">
                 <div className="section-title">
-                    <h1>There doesn't seem to be anything here.</h1>
+                    <h1>No books found for {props.title}.</h1>
                 </div>
             </div>
         </section>
