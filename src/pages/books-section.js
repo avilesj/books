@@ -14,26 +14,32 @@ class BooksSectionPage extends Component {
         }
     }
 
-    componentDidMount(){
+    getBooks() {
         Axios.get("https://www.googleapis.com/books/v1/volumes?langRestrict=en&q=" + this.props.categoryName + "&key=" + process.env.REACT_APP_GOOGLE_API_KEY)
         .then((response) => {
             this.setState({
                 books: response.data.items,
                 isLoading: false
             })
+        }).catch((err) =>{
+            this.setState({
+                isLoading:false
+            })
+            console.log(err);
         })
     }
 
+    componentDidMount(){
+       this.getBooks();
+    }
+
     componentDidUpdate(previousProps){
-        if(previousProps.categoryName !== this.categoryName)
+        if(previousProps.categoryName !== this.props.categoryName)
         {
-            Axios.get("https://www.googleapis.com/books/v1/volumes?langRestrict=en&q=" + this.props.categoryName + "&key=" + process.env.REACT_APP_GOOGLE_API_KEY)
-            .then((response) => {
-                this.setState({
-                    books: response.data.items,
-                    isLoading: false
-                })
-            })  
+            this.setState({
+                isLoading: true
+            })
+            this.getBooks();  
         }
     }
     render() {
