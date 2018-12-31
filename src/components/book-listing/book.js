@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 let Book = (props) => {
     let bookData = {
         id: props.id,
-        picture: props.picture,
+        picture: props.picture.replace('http://', 'https://'),
         title: props.title,
     }
     return (
